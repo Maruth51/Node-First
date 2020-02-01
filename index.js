@@ -1,15 +1,7 @@
 const http =require("http")
-const url = require("url")
+const getquery = require("./getquerystring")
 //callback functions are invoked when request is made to the server
-function getquery(urlstring){
-    try {
-        return url.parse(urlstring, true)
-    }
-    catch(e){
-        console.log(e)
-    }
-    
-}
+
 http.createServer((req,res)=>{
     const queryobject = getquery(req.url).query
     console.log(queryobject)
@@ -18,5 +10,5 @@ http.createServer((req,res)=>{
     res.end();
 }
 
-).listen(8000);
+).listen(8080);
 
